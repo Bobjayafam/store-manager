@@ -1,32 +1,50 @@
-* {
+ * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: sans-serif;
   background: #1E3F5A;
+  width: 100%;
+}
+.container {
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
 }
 
-.intro-text {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #d8d4f2;
-  letter-spacing: 1.4px;
+.container-item {
+  flex: 1;
+  margin: 20px;
+ }
+
+.intro-text{
+  color: white;
+  letter-spacing: 1.2px;
 }
 
-.intro-text span {
-  font-size: 30px
+#brand{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
 }
 
+.sub-lead {
+  font-size: 20px;
+}
+
+.icons {
+  margin-top: 20px;
+  color: white;
+}
+.icons img {
+  background: white;
+}
 .login-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
+  max-width: 500px;
   padding: 40px;
   background: #77878B;
   border-radius: 8px;
@@ -82,9 +100,6 @@ input[type=submit]{
   cursor: pointer;
   border-radius: 5px;
 }
-
-/* FOR TABS */
-
 .selector-tabs {
   margin-top: 20px;
 }
@@ -143,4 +158,11 @@ input[type=submit]{
 
 .tab-content .active {
   display: block;
+}
+
+@media screen and (max-width: 768px){
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
 }

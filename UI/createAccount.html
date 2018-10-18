@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Create New Account</title>
+  <link rel="stylesheet" href="create.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li>mySTORE</li>
+          <li>FAQs</li>
+          <li>list</li>
+        </ul>
+      </nav>
+      <button class="btn">Logout</button>
+    </header>
+    <aside class="sidebar">
+      <h3></h3>
+      <ul>
+        <li class="active"><a href="/createAccount.html">Attendants</a></li>
+        <li>View Sales</li>
+        <li>Add Products</li>
+      </ul>
+    </aside>
+    <!--aside-->
+    <div class="wrapper">
+      <section class="main">
+        <h2>Welcome, ADMIN</h2>
+        <p>Create an Account</p>
+
+        <form>
+          <div class="input-box">
+            <input type="text" name="" required>
+            <label for="">Enter Name</label>
+          </div>
+          <div class="input-box">
+            <input type="text" name="" required>
+            <label for="">Enter Username</label>
+          </div>
+          <div class="input-box">
+            <input type="password" name="" required>
+            <label for="">Enter Password</label>
+          </div>
+          <div class="input-box">
+            <input type="password" name="" required>
+            <label for="">Confirm Password</label>
+          </div>
+          <div class="select-field">
+            <select name="auth-type" id="">
+              <option value="" disabled selected>Choose User Type</option>
+              <option value="Attendant">Attendant</option>
+              <option value="Administrator">Administrator</option>
+            </select>
+          </div>
+          <input type="submit" class="btn" value="SUBMIT">
+        </form>
+
+        <div class="attendants-data">
+          <h3>Attendants</h3>
+          <div class="table-responsive-vertical">
+            <table id="table" class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Attendant ID</th>
+                  <th>Attendant Name</th>
+                  <th>Username</th>
+                  <th>Employment Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-title="ID">01</td>
+                  <td data-title="name">Ada</td>
+                  <td data-title="username">Ada2018</td>
+                  <td data-title="employment-date">28th January, 2018</td>
+                </tr>
+                <tr>
+                  <td data-title="ID">02</td>
+                  <td data-title="name">John</td>
+                  <td data-title="username">john4eva</td>
+                  <td data-title="employment-date">30th January, 2018</td>
+                </tr>
+                <tr>
+                  <td data-title="ID">03</td>
+                  <td data-title="name">Stanley</td>
+                  <td data-title="username">stanobi</td>
+                  <td data-title="employment-date">3rd February, 2018</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+    </div>
+    <!--wrapper-->
+
+
+    <footer>
+      <h3>Creative property of mySTORE</h3>
+      <p>&copy; 2018 mySTORE</p>
+    </footer>
+  </div>
+  <!--container-->
+
+
+
+</body>
+
+</html>
