@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Products</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="create.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li>mySTORE</li>
+          <li>FAQs</li>
+          <li>list</li>
+        </ul>
+      </nav>
+      <button class="btn">Logout</button>
+    </header>
+    <aside class="sidebar">
+      <h3></h3>
+      <ul>
+        <li><a href="/createAccount.html">Attendants</a></li>
+        <li><a href="/admin-view-sales.html">View Sales</a></li>
+        <li class="active"><a href="/add-products.html">Add Products</a></li>
+      </ul>
+    </aside>
+    <!--aside-->
+    <div class="wrapper">
+      <section class="main">
+        <h2>Welcome, ADMIN</h2>
+        <p>Add Products to Store</p>
+
+        <form>
+          <div class="input-box">
+            <input type="text" name="" required>
+            <label for="">Enter Product Name</label>
+          </div>
+          <div class="input-box">
+            <input type="text" name="" required>
+            <label for="">Enter Price</label>
+          </div>
+          <div class="input-box">
+            <input type="number" name="" required>
+            <label for="">Quantity</label>
+          </div>
+          <div class="input-box">
+            <textarea name="" required></textarea>
+            <label for="">Enter Product Description</label>
+          </div>
+          <div class="file-upload">
+            <span class="btn btn-upload">BROWSE</span>
+            <input type="file" name="FileAttachment" id="FileAttachment" class="upload" />
+          </div>
+          <input type="text" class="fileuploadurl" readonly placeholder="Click browse to select product image">
+
+
+          <input type="submit" class="btn" value="SUBMIT">
+
+        </form>
+      </section>
+    </div>
+    <!--wrapper-->
+
+
+    <footer>
+      <h3>Creative property of mySTORE</h3>
+      <p>&copy; 2018 mySTORE</p>
+    </footer>
+  </div>
+  <!--container-->
+
+
+  <script src="file-upload.js"></script>
+</body>
+
+</html>
