@@ -70,7 +70,8 @@ header nav li {
   position: relative;
 }
 
-.input-box input {
+.input-box input,
+textarea {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -83,7 +84,12 @@ header nav li {
   background: transparent;
 }
 
-.input-box label {
+textarea {
+  resize: none;
+}
+
+.input-box label,
+textarea label {
   position: absolute;
   top: 0;
   left: 0;
@@ -94,11 +100,32 @@ header nav li {
 }
 
 .input-box input:focus ~ label,
-.input-box input:valid ~ label {
-  top: -20px;
+.input-box input:valid ~ label,
+.input-box textarea:focus ~ label,
+.input-box textarea:valid ~ label
+ {
+  top: -25px;
   left: 0;
   font-size: 14px;
   color: #1E3F5A;
+}
+
+.file-upload{
+  margin: 0 10px 0 25px;
+}
+.upload {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+	padding: 0;
+  z-index: 10;
+	font-size: 20px;
+	cursor: pointer;
+	height: 36px;
+	opacity: 0;
+	filter: alpha(opacity=0);
 }
 
 .btn {
@@ -119,6 +146,20 @@ header nav li {
 .btn:hover{
   background: #693f7e;
 }
+
+.btn-upload {
+  display: inline-block;
+  margin: 0;
+}
+
+.fileuploadurl{
+  border: none;
+  font-size: 12px;
+  margin-top: 0;
+  padding-left: 0;
+  width: 250px;
+  margin-bottom: 20px;
+ }
 
 
 .sidebar {
