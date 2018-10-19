@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Products</title>
+  <title>Add Products</title>
   <script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="create.css">
@@ -66,19 +66,111 @@
 
         </form>
       </section>
+
+      <br>
+      <br>
+
+      <div class="input-box">
+        <input type="text" name="" id="input" required>
+        <label for=""><i class="fas fa-search"></i> Filter product by name</label>
+      </div>
+
+      <div class="table-responsive-vertical">
+        <table id="table" class="table table-hover">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Price</th>
+              <th>Available Quantity</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-title="ID">01</td>
+              <td data-title="name">Tecno</td>
+              <td data-title="product-image">
+                <div class="card-img">
+                  <img src="images/tecno-camon-x-pro.jpg" alt="tecno-camon-x-pro">
+                </div>
+              </td>
+              <td data-title="price">$245</td>
+              <td data-title="quantity">10pcs</td>
+              <td data-title="description">2GB Ram, 13MP, 32GB storage capacity</td>
+              <td data-title="actions">
+                <a href="" class="btn btn-upload">Edit</a>
+                <a href="" class="btn btn-upload">Delete</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-title="ID">01</td>
+              <td data-title="name">Gionee</td>
+              <td data-title="product-image">
+                <div class="card-img">
+                  <img src="images/tecno-camon-x-pro.jpg" alt="tecno-camon-x-pro">
+                </div>
+              </td>
+              <td data-title="price">$245</td>
+              <td data-title="quantity">10pcs</td>
+              <td data-title="description">2GB Ram, 13MP, 32GB storage capacity</td>
+              <td data-title="actions">
+                <a href="" class="btn btn-upload">Edit</a>
+                <a href="" class="btn btn-upload">Delete</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-title="ID">01</td>
+              <td data-title="name">Samsung</td>
+              <td data-title="product-image">
+                <div class="card-img">
+                  <img src="images/tecno-camon-x-pro.jpg" alt="tecno-camon-x-pro">
+                </div>
+              </td>
+              <td data-title="price">$245</td>
+              <td data-title="quantity">10pcs</td>
+              <td data-title="description">2GB Ram, 13MP, 32GB storage capacity</td>
+              <td data-title="actions">
+                <a href="" class="btn btn-upload">Edit</a>
+                <a href="" class="btn btn-upload">Delete</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-title="ID">01</td>
+              <td data-title="name">iPhone</td>
+              <td data-title="product-image">
+                <div class="card-img">
+                  <img src="images/tecno-camon-x-pro.jpg" alt="tecno-camon-x-pro">
+                </div>
+              </td>
+              <td data-title="price">$245</td>
+              <td data-title="quantity">10pcs</td>
+              <td data-title="description">2GB Ram, 13MP, 32GB storage capacity</td>
+              <td data-title="actions">
+                <a href="" class="btn btn-upload">Edit</a>
+                <a href="" class="btn btn-upload">Delete</a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <!--wrapper-->
+
+
+      <footer>
+        <h3>Creative property of mySTORE</h3>
+        <p>&copy; 2018 mySTORE</p>
+      </footer>
     </div>
-    <!--wrapper-->
+    <!--container-->
 
 
-    <footer>
-      <h3>Creative property of mySTORE</h3>
-      <p>&copy; 2018 mySTORE</p>
-    </footer>
-  </div>
-  <!--container-->
-
-
-  <script src="file-upload.js"></script>
+    <script src="filterList.js"></script>
 </body>
 
 </html>
