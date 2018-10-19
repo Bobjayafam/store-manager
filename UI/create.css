@@ -277,3 +277,32 @@ footer {
     color: #757575;
   }
 }
+
+.products-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.card {
+	background-color: #fff;
+  margin-bottom: 1.6rem;
+  text-align: center;
+}
+
+.card-img{
+	min-height: 100px;
+}
+
+.card-img img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+@media screen and (max-width: 768px){
+  .card-img img {
+    width: 20%;
+    max-width: 20%;
+    display: block;
+  }
+}
