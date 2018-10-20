@@ -1,0 +1,38 @@
+{
+  "name": "store-manager",
+  "version": "1.0.0",
+  "description": "Store Manager is a web application that helps store owners manage sales and product inventory\r records.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js --exec babel-node",
+    "test": "mocha test/*.js --require babel-register --reporter spec || exit 0",
+    "coverage": "node node_modules/.bin/istanbul cover_mocha -- -R spec",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bobjayafam/store-manager.git"
+  },
+  "keywords": [],
+  "author": "Jude Afam <afamjudeo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bobjayafam/store-manager/issues"
+  },
+  "homepage": "https://github.com/Bobjayafam/store-manager#readme",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-register": "6.26.0",
+    "chai": "4.2.0",
+    "chai-http": "4.2.0",
+    "eslint": "5.7.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "mocha": "5.2.0",
+    "nodemon": "1.18.4"
+  },
+  "dependencies": {
+    "express": "4.16.4"
+  }
+}
