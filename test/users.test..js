@@ -25,3 +25,18 @@ describe("POST api/v1/users", () => {
       });
   });
 });
+
+describe("GET /api/v1/users", () => {
+  it("should return all users", done => {
+    chai
+      .request(server)
+      .get("/api/v1/users")
+      .end((error, res) => {
+        should.not.exist(error);
+        console.log(res.body);
+        res.status.should.equal(200);
+        res.type.should.equal("application/json");
+        done();
+      });
+  });
+});
