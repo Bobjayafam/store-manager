@@ -29,9 +29,9 @@ class User {
     return newUser;
   }
 
-  findUser(username) {
+  findUser(id) {
     return this.users.find(user => {
-      return user.username === username;
+      return user.user_id === id;
     });
   }
 

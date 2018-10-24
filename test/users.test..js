@@ -33,10 +33,31 @@ describe("GET /api/v1/users", () => {
       .get("/api/v1/users")
       .end((error, res) => {
         should.not.exist(error);
-        console.log(res.body);
         res.status.should.equal(200);
         res.type.should.equal("application/json");
         done();
+      });
+  });
+});
+
+describe("GET /api/v1/users/user_id", () => {
+  it("should return a single user", done => {
+    chai
+      .request(server)
+      .post("/api/v1/users")
+      .send({ username: "messi", password: "123456", admin: false })
+      .end((error, res) => {
+        should.not.exist(error);
+        chai
+          .request(server)
+          .get(`/api/v1/users/${res.body.user.user_id}`)
+          .end((error, res) => {
+            should.not.exist(error);
+            res.status.should.eql(200);
+            res.type.should.eql("application/json");
+            res.body.success.should.equal(true);
+            done();
+          });
       });
   });
 });
