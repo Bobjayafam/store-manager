@@ -9,7 +9,7 @@ const Product = {
     });
   },
   getOne(req, res) {
-    const product = ProductModel.findOne(req.params.product_id);
+    const product = ProductModel.findOne(req.params.productId);
     return res.status(200).json({
       success: true,
       product

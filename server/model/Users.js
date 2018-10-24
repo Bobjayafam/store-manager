@@ -4,13 +4,13 @@ class User {
   constructor() {
     this.users = [
       {
-        user_id: shortid.generate(),
+        userId: shortid.generate(),
         username: "judeafam",
         password: bcrypt.hashSync("123456", 10),
         admin: true
       },
       {
-        user_id: shortid.generate(),
+        userId: shortid.generate(),
         username: "stanley",
         password: bcrypt.hashSync("123456", 10),
         admin: false
@@ -20,7 +20,7 @@ class User {
   addUser(user) {
     let hash = bcrypt.hashSync(user.password, 10);
     const newUser = {
-      user_id: shortid.generate(),
+      userId: shortid.generate(),
       username: user.username,
       password: hash,
       admin: user.admin
@@ -31,7 +31,7 @@ class User {
 
   findUser(id) {
     return this.users.find(user => {
-      return user.user_id === id;
+      return user.userId === id;
     });
   }
 
