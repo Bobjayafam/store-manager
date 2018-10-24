@@ -22,6 +22,26 @@ describe("GET /api/v1/products", () => {
   });
 });
 
+describe("POST /api/v1/products", () => {
+  it("should create a product", done => {
+    chai
+      .request(server)
+      .post("/api/v1/products")
+      .send({
+        name: "Samsung s9",
+        price: 200000,
+        quantity: 12,
+        description: "8gb ram, 256gb storage"
+      })
+      .end((error, res) => {
+        should.not.exist(error);
+        res.status.should.equal(201);
+        res.body.success.should.eql(true);
+        done();
+      });
+  });
+});
+
 describe("PUT /api/v1/products/productID", () => {
   it("should update a single product", done => {
     chai
