@@ -1,6 +1,13 @@
 import ProductModel from "../model/Products";
 
 const Product = {
+  add(req, res) {
+    const product = ProductModel.addproduct(req.body);
+    return res.status(201).json({
+      success: true,
+      product
+    });
+  },
   getAll(req, res) {
     const products = ProductModel.findAll();
     return res.status(200).json({
