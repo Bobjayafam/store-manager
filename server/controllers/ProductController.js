@@ -2,7 +2,7 @@ import ProductModel from "../model/Products";
 
 const Product = {
   add(req, res) {
-    const product = ProductModel.addproduct(req.body);
+    const product = ProductModel.addProduct(req.body);
     return res.status(201).json({
       success: true,
       product
