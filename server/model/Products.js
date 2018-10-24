@@ -34,3 +34,5 @@ class Product {
     return this.products;
   }
 }
+
+export default new Product();
