@@ -51,6 +51,12 @@ class Product {
 
     return this.products[index];
   }
+  delete(id) {
+    const product = this.findOne(id);
+    const productIndex = this.products.indexOf(product);
+    this.products.splice(productIndex, 1);
+    return {};
+  }
 }
 
 export default new Product();

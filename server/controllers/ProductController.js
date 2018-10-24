@@ -19,6 +19,15 @@ const Product = {
     const product = ProductModel.findOne(req.params.productId);
     const updatedProduct = ProductModel.update(req.params.productId, req.body);
     return res.status(200).json({ success: true, updatedProduct });
+  },
+  delete(req, res) {
+    const product = ProductModel.findOne(req.params.productId);
+    if (!product) {
+      res.status(400).json({ message: "Product not found" });
+      return;
+    }
+    const deleteResponse = ProductModel.delete(product);
+    res.status(204).send(deleteResponse);
   }
 };
 

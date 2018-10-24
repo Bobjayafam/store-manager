@@ -3,6 +3,7 @@ import chaiHttp from "chai-http";
 import server from "../index";
 
 const should = chai.should();
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -44,6 +45,34 @@ describe("PUT /api/v1/products/productID", () => {
                 done();
               });
           });
+      });
+  });
+});
+
+describe("DELETE /api/v1/products/productId", () => {
+  it("should delete a single product", done => {
+    chai
+      .request(server)
+      .get("/api/v1/products")
+      .end((error, res) => {
+        should.not.exist(error);
+        chai
+          .request(server)
+          .delete(`/api/v1/products/${res.body.products[0].productId}`)
+          .end((error, res) => {
+            should.not.exist(error);
+            res.status.should.eql(204);
+            done();
+          });
+      });
+  });
+  it("should return an error when given wrong productId", done => {
+    chai
+      .request(server)
+      .delete("/api/v1/products/55")
+      .end((error, res) => {
+        res.status.should.eql(400);
+        done();
       });
   });
 });
