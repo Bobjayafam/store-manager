@@ -14,6 +14,11 @@ const Product = {
       success: true,
       product
     });
+  },
+  update(req, res) {
+    const product = ProductModel.findOne(req.params.productId);
+    const updatedProduct = ProductModel.update(req.params.productId, req.body);
+    return res.status(200).json({ success: true, updatedProduct });
   }
 };
 
