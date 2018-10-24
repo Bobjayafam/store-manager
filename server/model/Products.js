@@ -29,9 +29,16 @@ class Product {
       quantity,
       description
     };
+    this.products.push(newProduct);
+    return newProduct;
   }
   findAll() {
     return this.products;
+  }
+  findOne(id) {
+    return this.products.find(product => {
+      return product.product_id === id;
+    });
   }
 }
 
