@@ -11,6 +11,19 @@ const User = {
       success: true,
       users
     });
+  },
+  getOne(req, res) {
+    const user = UserModel.findUser(req.params.user_id);
+    if (!user) {
+      res.status(404).json({
+        success: false,
+        message: `User with user_id ${req.params.user_id}`
+      });
+    }
+    return res.json({
+      success: true,
+      user
+    });
   }
 };
 
