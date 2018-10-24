@@ -13,11 +13,11 @@ const User = {
     });
   },
   getOne(req, res) {
-    const user = UserModel.findUser(req.params.user_id);
+    const user = UserModel.findUser(req.params.userId);
     if (!user) {
       res.status(404).json({
         success: false,
-        message: `User with user_id ${req.params.user_id}`
+        message: `User with user_id ${req.params.userId}`
       });
     }
     return res.json({

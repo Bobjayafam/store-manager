@@ -40,7 +40,7 @@ describe("GET /api/v1/users", () => {
   });
 });
 
-describe("GET /api/v1/users/user_id", () => {
+describe("GET /api/v1/users/userId", () => {
   it("should return a single user", done => {
     chai
       .request(server)
@@ -50,7 +50,7 @@ describe("GET /api/v1/users/user_id", () => {
         should.not.exist(error);
         chai
           .request(server)
-          .get(`/api/v1/users/${res.body.user.user_id}`)
+          .get(`/api/v1/users/${res.body.user.userId}`)
           .end((error, res) => {
             should.not.exist(error);
             res.status.should.eql(200);
