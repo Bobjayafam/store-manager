@@ -20,3 +20,30 @@ describe("GET /api/v1/products", () => {
       });
   });
 });
+
+describe("PUT /api/v1/products/productID", () => {
+  it("should update a single product", done => {
+    chai
+      .request(server)
+      .get("/api/v1/products")
+      .end((error, res) => {
+        should.not.exist(error);
+        chai
+          .request(server)
+          .get(`/api/v1/products/${res.body.products[0].productId}`)
+          .end((error, res) => {
+            should.not.exist(error);
+            res.status.should.eql(200);
+            res.body.success.should.equal(true);
+            chai
+              .request(server)
+              .put(`/api/v1/products/${res.body.product.productId}`)
+              .end((error, res) => {
+                should.not.exist(error);
+                res.status.should.eql(200);
+                done();
+              });
+          });
+      });
+  });
+});

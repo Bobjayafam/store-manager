@@ -40,6 +40,17 @@ class Product {
       return product.productId === id;
     });
   }
+  update(id, doc) {
+    const product = this.findOne(id);
+    const index = this.products.indexOf(product);
+    this.products[index].name = doc["name"] || product.name;
+    this.products[index].price = doc["price"] || product.price;
+    this.products[index].quantity = doc["quantity"] || product.quantity;
+    this.products[index].description =
+      doc["description"] || product.description;
+
+    return this.products[index];
+  }
 }
 
 export default new Product();
