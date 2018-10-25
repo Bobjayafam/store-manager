@@ -49,6 +49,13 @@ class User {
     this.users[userIndex].admin = doc["admin"] || product.admin;
     return this.users[userIndex];
   }
+
+  delete(id) {
+    const user = this.findUser(id);
+    const userIndex = this.users.indexOf(user);
+    this.users.splice(userIndex, 1);
+    return {};
+  }
 }
 
 export default new User();
