@@ -72,7 +72,7 @@ describe("PUT /api/v1/users/userID", () => {
         chai
           .request(server)
           .get(`/api/v1/users/${res.body.users[0].userId}`)
-          .end((error, res) => 
+          .end((error, res) => {
             should.not.exist(error);
             res.status.should.eql(200);
             res.body.success.should.equal(true);
@@ -80,9 +80,9 @@ describe("PUT /api/v1/users/userID", () => {
               .request(server)
               .put(`/api/v1/users/${res.body.user.userId}`)
               .send({
-                "username": "judeafam1",
-                "password": "123456",
-                "admin": true
+                username: "judeafam1",
+                password: "123456",
+                admin: true
               })
               .end((error, res) => {
                 should.not.exist(error);
