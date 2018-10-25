@@ -93,3 +93,31 @@ describe("PUT /api/v1/users/userID", () => {
       });
   });
 });
+
+describe("DELETE /api/v1/users/userId", () => {
+  it("should delete a single user", done => {
+    chai
+      .request(server)
+      .get("/api/v1/users")
+      .end((error, res) => {
+        should.not.exist(error);
+        chai
+          .request(server)
+          .delete(`/api/v1/users/${res.body.users[0].userId}`)
+          .end((error, res) => {
+            should.not.exist(error);
+            res.status.should.eql(204);
+            done();
+          });
+      });
+  });
+  it("should return an error when given wrong userId", done => {
+    chai
+      .request(server)
+      .delete("/api/v1/users/55")
+      .end((error, res) => {
+        res.status.should.eql(400);
+        done();
+      });
+  });
+});

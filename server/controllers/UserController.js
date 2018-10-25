@@ -29,6 +29,15 @@ const User = {
     const user = UserModel.findUser(req.params.userId);
     const updatedUser = UserModel.update(req.params.userId, req.body);
     return res.status(200).json({ success: true, updatedUser });
+  },
+  delete(req, res) {
+    const user = UserModel.findUser(req.params.userId);
+    if (!user) {
+      res.status(400).json({ message: "User not found" });
+      return;
+    }
+    const deleteResponse = UserModel.delete(user);
+    res.status(204).send(deleteResponse);
   }
 };
 
