@@ -5,8 +5,8 @@ class Sales {
     this.sales = [
       {
         salesId: shortid.generate(),
-        username: stanley,
-        cartItems: [
+        username: "stanley",
+        soldItems: [
           {
             productId: shortid.generate(),
             name: "Gionee M5 mini",
@@ -25,11 +25,11 @@ class Sales {
     ];
   }
   addSales(sale) {
-    const { username, cartItems, totalPrice } = sale;
+    const { username, soldItems, totalPrice } = sale;
     const newSale = {
       salesId: shortid.generate(),
       username,
-      cartItems,
+      soldItems,
       totalPrice
     };
     this.sales.push(newSale);
@@ -45,4 +45,4 @@ class Sales {
   }
 }
 
-export default new Product();
+export default new Sales();
