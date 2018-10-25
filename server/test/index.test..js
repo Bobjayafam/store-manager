@@ -11,7 +11,7 @@ describe("index route", () => {
     it("should return json", done => {
       chai
         .request(server)
-        .get("/")
+        .get("/api/v1")
         .end((error, res) => {
           should.not.exist(error);
           res.status.should.eql(200);
