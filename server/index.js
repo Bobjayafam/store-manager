@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use("/", indexRoutes);
+app.use("/api/v1", indexRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/products", productRoutes);
 
