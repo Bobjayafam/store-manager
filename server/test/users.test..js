@@ -61,3 +61,35 @@ describe("GET /api/v1/users/userId", () => {
       });
   });
 });
+
+describe("PUT /api/v1/users/userID", () => {
+  it("should update a single user details", done => {
+    chai
+      .request(server)
+      .get("/api/v1/users")
+      .end((error, res) => {
+        should.not.exist(error);
+        chai
+          .request(server)
+          .get(`/api/v1/users/${res.body.users[0].userId}`)
+          .end((error, res) => 
+            should.not.exist(error);
+            res.status.should.eql(200);
+            res.body.success.should.equal(true);
+            chai
+              .request(server)
+              .put(`/api/v1/users/${res.body.user.userId}`)
+              .send({
+                "username": "judeafam1",
+                "password": "123456",
+                "admin": true
+              })
+              .end((error, res) => {
+                should.not.exist(error);
+                res.status.should.eql(200);
+                done();
+              });
+          });
+      });
+  });
+});

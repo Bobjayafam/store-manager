@@ -38,6 +38,17 @@ class User {
   findAll() {
     return this.users;
   }
+
+  update(id, doc) {
+    const user = this.findUser(id);
+    const userIndex = this.users.indexOf(user);
+    this.users[userIndex].username = doc["username"] || user.username;
+    this.users[userIndex].password =
+      bcrypt.hashSync(doc["password"], 10) ||
+      bcrypt.hashSync(user.password, 10);
+    this.users[userIndex].admin = doc["admin"] || product.admin;
+    return this.users[userIndex];
+  }
 }
 
 export default new User();
