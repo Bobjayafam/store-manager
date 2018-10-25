@@ -24,6 +24,11 @@ const User = {
       success: true,
       user
     });
+  },
+  update(req, res) {
+    const user = UserModel.findUser(req.params.userId);
+    const updatedUser = UserModel.update(req.params.userId, req.body);
+    return res.status(200).json({ success: true, updatedUser });
   }
 };
 
