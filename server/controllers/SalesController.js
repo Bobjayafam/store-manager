@@ -1,13 +1,20 @@
 import SalesModel from "../model/Sales";
 
-const Sale = {
-  getAll(req, res) {
+class SalesController {
+  static getAll(req, res) {
     const sales = SalesModel.findAll();
     return res.status(200).json({
       success: true,
       sales
     });
   }
-};
+  static getOne(req, res) {
+    const sale = SalesModel.findOne(req.params.saleId);
+    return res.status(200).json({
+      success: true,
+      sale
+    });
+  }
+}
 
-export default Sale;
+export default SalesController;

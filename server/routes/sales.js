@@ -1,7 +1,8 @@
 import express from "express";
-import Sales from "../controllers/SalesController";
+import SalesController from "../controllers/SalesController";
 const router = express.Router();
 
-router.get("/", Sales.getAll);
+router.get("/", SalesController.getAll);
+router.get("/:saleId", SalesController.getOne);
 
 export default router;

@@ -6,13 +6,13 @@ class User {
       {
         userId: shortid.generate(),
         username: "judeafam",
-        password: bcrypt.hashSync("123456", 10),
+        // password: bcrypt.hashSync("123456", 10),
         admin: true
       },
       {
         userId: shortid.generate(),
         username: "stanley",
-        password: bcrypt.hashSync("123456", 10),
+        // password: bcrypt.hashSync("123456", 10),
         admin: false
       }
     ];
@@ -22,10 +22,15 @@ class User {
     const newUser = {
       userId: shortid.generate(),
       username: user.username,
-      password: hash,
+      // password: hash,
       admin: user.admin
     };
-    this.users.push(newUser);
+    const { userId, username, admin } = newUser;
+    this.users.push({
+      userId,
+      username,
+      admin
+    });
     return newUser;
   }
 
