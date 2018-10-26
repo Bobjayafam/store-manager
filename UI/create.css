@@ -7,16 +7,18 @@
 }
 
 body {
-  background: #eee;
+  background:#DCEDC8;
   color: #434344;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  max-width: 1200px;
+  width: 100%;
   background: #ffffff;
-  margin: 0 auto;
   padding: 0 60px;
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -27,15 +29,18 @@ body {
   grid-gap: 50px;
 }
 
+
+
 header {
   grid-area: header;
-  color: #9f9c9c;
+  color: #DCEDC8;
   text-transform: uppercase;
-  border-bottom: 2px solid #b0e0ea;
   padding: 20px 0;
+  background: #3F51B5;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
 
 header button {
   justify-self: end;
@@ -44,11 +49,17 @@ header button {
 header nav {
   justify-self: start;
   list-style: none;
+
 }
 
 header nav li {
   margin-right: 15px;
   display: inline-block;
+}
+
+header nav li a {
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
 .main {
@@ -72,13 +83,13 @@ header nav li {
 
 .input-box input,
 textarea {
-  width: 100%;
+  width: 40%;
   padding: 10px 0;
   font-size: 16px;
   color: black;
   margin-bottom: 30px;
   border: none;
-  border-bottom: 1px solid blue;
+  border-bottom: 1px solid #BDBDBD;
   outline: none;
   letter-spacing: 1px;
   background: transparent;
@@ -137,14 +148,8 @@ textarea label {
   outline: none;
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); 
-  background-color: #1E3F5A;
+  background-color: #009688;
   color: #ecf0f1;
-  
-  transition: background-color .3s;
-}
-
-.btn:hover{
-  background: #693f7e;
 }
 
 .btn-upload {
@@ -165,14 +170,13 @@ textarea label {
 .sidebar {
   grid-area: sidebar;
   padding: 20px;
-  border-top: 3px solid #693f7e;
-  background: #f9f9f9;
+  background: #3F51B5;
 }
 
 .sidebar ul {
   list-style-type: none;
   margin-top: 1rem;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
 }
 
 .sidebar ul > li {
@@ -180,12 +184,13 @@ textarea label {
 }
 
 .sidebar li.active {
-  border-bottom: 1px solid #693f7e;
   width: 50%;
+  border-bottom: 1px Solid #FFFFFF;
 }
 
 .sidebar li a {
   text-decoration: none;
+  color: #FFFFFF;
 }
 .attendants-data {
   margin-top: 20px;
@@ -211,17 +216,17 @@ textarea label {
   font-weight: 400;
   color: #757575;
   vertical-align: bottom;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid #BDBDBD;
 }
 
 select {
   font-family: inherit;
   background: transparent;
-  width: 50%;
+  width: 40%;
   padding: 4px 0;
   color: black;
   border: none;
-  border-bottom: 1px solid #693f7e;
+  border-bottom: 1px solid #BDBDBD;
   margin-bottom: 1.5rem;
 }
 
@@ -234,7 +239,7 @@ footer {
   color: #fff;
   text-align: center;
   padding: 10px 0;
-  background: #9f9c9c;
+  background: #3F51B5;
 }
 
 @media screen and (max-width: 768px){
@@ -266,7 +271,6 @@ footer {
   .table-responsive-vertical > .table > tbody > tr > td {
     background-color: #fff;
     display: block;
-    vertical-align: middle;
     text-align: right;
   }
   .table-responsive-vertical > .table > tbody > tr > td[data-title]:before {
