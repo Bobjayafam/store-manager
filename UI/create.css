@@ -7,36 +7,27 @@
 }
 
 body {
-  background:#DCEDC8;
-  color: #434344;
+  background:#C5CAE9;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .container {
-  width: 100%;
   background: #ffffff;
-  padding: 0 60px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-areas: 
-    "header header"
     "sidebar main"
-    "footer footer";
-  grid-gap: 50px;
 }
 
 
 
 header {
   grid-area: header;
-  color: #DCEDC8;
+  color: #fff;
   text-transform: uppercase;
   padding: 20px 0;
-  background: #3F51B5;
+  background: #009688;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -49,7 +40,6 @@ header button {
 header nav {
   justify-self: start;
   list-style: none;
-
 }
 
 header nav li {
@@ -169,8 +159,9 @@ textarea label {
 
 .sidebar {
   grid-area: sidebar;
-  padding: 20px;
-  background: #3F51B5;
+  padding: 10px;
+  background: #009688;
+  margin-right: 20px;
 }
 
 .sidebar ul {
@@ -239,18 +230,29 @@ footer {
   color: #fff;
   text-align: center;
   padding: 10px 0;
-  background: #3F51B5;
+  background: #009688;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 @media screen and (max-width: 768px){
   .container {
     grid-template-columns: 1fr;
     grid-template-areas: 
-      "header"
       "sidebar"
       "main"
-      "footer";
   }
+
+  .sidebar {
+    width: 100%;
+  }
+  .sidebar li {
+    display: inline-block;
+    border-right: 1px solid #fff;
+  }
+  
   .table-responsive-vertical > .table {
     margin-bottom: 0;
     background-color: transparent;
