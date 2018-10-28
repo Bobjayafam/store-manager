@@ -40,9 +40,10 @@ $ npm run test
 ```
 
 ## API usage
-The API url can be found at https://mystore-manager.herokuapp.com/api/v1
+The API url can be found at (https://mystore-manager.herokuapp.com/api/v1)
 
 ## User endpoints ``/api/v1/users``
+
 | Method        | route         | description  |
 | ------------- |:-------------:| -----:|
 | GET           | /users        | gets all user |
@@ -67,7 +68,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Jude Afam** - https://github.com/bobjayafam
+**Jude Afam** - https://github.com/bobjayafam
 
 
 ## License
