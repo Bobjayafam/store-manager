@@ -15,6 +15,13 @@ class SalesController {
       sale
     });
   }
+  static add(req, res) {
+    const sale = SalesModel.addSales(req.body);
+    return res.status(201).json({
+      success: true,
+      sale
+    });
+  }
 }
 
 export default SalesController;

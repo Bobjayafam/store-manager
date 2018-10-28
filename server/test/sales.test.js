@@ -20,3 +20,32 @@ describe("GET /api/v1/sales", () => {
       });
   });
 });
+
+describe("POST /api/v1/sales", () => {
+  it("should create a sales record", done => {
+    chai
+      .request(server)
+      .post("/api/v1/sales")
+      .send({
+        username: "stanley",
+        soldItems: [
+          {
+            name: "Innfinix Hot 2",
+            price: 22000,
+            quantity: 1
+          },
+          {
+            name: "Itel p12",
+            price: 10000,
+            quantity: 1
+          }
+        ],
+        totalPrice: 32000
+      })
+      .end((error, res) => {
+        should.not.exist(error);
+        res.status.should.eql(201);
+        done();
+      });
+  });
+});
