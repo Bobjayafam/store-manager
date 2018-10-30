@@ -1,5 +1,6 @@
 import shortid from "shortid";
 import bcrypt from "bcrypt";
+
 class User {
   constructor() {
     this.users = [
@@ -7,13 +8,13 @@ class User {
         userId: shortid.generate(),
         username: "judeafam",
         // password: bcrypt.hashSync("123456", 10),
-        admin: true
+        role: "admin"
       },
       {
         userId: shortid.generate(),
         username: "stanley",
         // password: bcrypt.hashSync("123456", 10),
-        admin: false
+        role: "attendant"
       }
     ];
   }
@@ -23,13 +24,13 @@ class User {
       userId: shortid.generate(),
       username: user.username,
       // password: hash,
-      admin: user.admin
+      role: user.role
     };
-    const { userId, username, admin } = newUser;
+    const { userId, username, role } = newUser;
     this.users.push({
       userId,
       username,
-      admin
+      role
     });
     return newUser;
   }
@@ -47,11 +48,9 @@ class User {
   update(id, doc) {
     const user = this.findUser(id);
     const userIndex = this.users.indexOf(user);
-    this.users[userIndex].username = doc["username"] || user.username;
-    this.users[userIndex].password =
-      bcrypt.hashSync(doc["password"], 10) ||
-      bcrypt.hashSync(user.password, 10);
-    this.users[userIndex].admin = doc["admin"] || product.admin;
+    this.users[userIndex].username = doc["username"];
+    this.users[userIndex].password = bcrypt.hashSync(doc["password"], 10);
+    this.users[userIndex].role = doc["role"];
     return this.users[userIndex];
   }
 

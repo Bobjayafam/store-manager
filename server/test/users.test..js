@@ -15,7 +15,7 @@ describe("POST api/v1/users", () => {
       .send({
         username: "messi3",
         password: "123456",
-        admin: true
+        role: "admin"
       })
       .end((error, res) => {
         should.not.exist(error);
@@ -40,27 +40,45 @@ describe("GET /api/v1/users", () => {
   });
 });
 
-describe("GET /api/v1/users/userId", () => {
+describe("GEY /api/v1/users/:userId", () => {
   it("should return a single user", done => {
     chai
       .request(server)
-      .post("/api/v1/users")
-      .send({ username: "messi", password: "123456", admin: false })
+      .get("/api/v1/users")
       .end((error, res) => {
-        should.not.exist(error);
         chai
           .request(server)
-          .get(`/api/v1/users/${res.body.user.userId}`)
+          .get(`/api/v1/users/${res.body.users[0].userId}`)
           .end((error, res) => {
             should.not.exist(error);
-            res.status.should.eql(200);
-            res.type.should.eql("application/json");
-            res.body.success.should.equal(true);
             done();
           });
       });
   });
 });
+
+// describe("GET /api/v1/users/userId", () => {
+//   it("should return a single user", done => {
+//     chai
+//       .request(server)
+//       .post("/api/v1/users")
+//       .send({ username: "messi", password: "123456", role: "attendant" })
+//       .end((error, res) => {
+//         should.not.exist(error);
+//         console.log(res.body);
+//         chai
+//           .request(server)
+//           .get(`/api/v1/users/${res.body.user.userId}`)
+//           .end((error, res) => {
+//             should.not.exist(error);
+//             res.status.should.eql(200);
+//             res.type.should.eql("application/json");
+//             res.body.success.should.equal(true);
+//             done();
+//           });
+//       });
+//   });
+// });
 
 describe("PUT /api/v1/users/userID", () => {
   it("should update a single user details", done => {
@@ -82,7 +100,7 @@ describe("PUT /api/v1/users/userID", () => {
               .send({
                 username: "judeafam1",
                 password: "123456",
-                admin: true
+                role: "admin"
               })
               .end((error, res) => {
                 should.not.exist(error);
