@@ -43,11 +43,10 @@ class Product {
   update(id, doc) {
     const product = this.findOne(id);
     const index = this.products.indexOf(product);
-    this.products[index].name = doc["name"] || product.name;
-    this.products[index].price = doc["price"] || product.price;
-    this.products[index].quantity = doc["quantity"] || product.quantity;
-    this.products[index].description =
-      doc["description"] || product.description;
+    this.products[index].name = doc["name"];
+    this.products[index].price = doc["price"];
+    this.products[index].quantity = doc["quantity"];
+    this.products[index].description = doc["description"];
 
     return this.products[index];
   }
