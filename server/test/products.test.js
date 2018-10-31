@@ -1,20 +1,20 @@
-import chai from "chai";
-import chaiHttp from "chai-http";
-import server from "../index";
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import server from '../index';
 
 const should = chai.should();
 const { expect } = chai;
 
 chai.use(chaiHttp);
 
-describe("GET /api/v1/products", () => {
-  it("should return all products", done => {
+describe('GET /api/v1/products', () => {
+  it('should return all products', (done) => {
     chai
       .request(server)
-      .get("/api/v1/products")
+      .get('/api/v1/products')
       .end((error, res) => {
         should.not.exist(error);
-        res.type.should.eql("application/json");
+        res.type.should.eql('application/json');
         res.status.should.eql(200);
         res.body.success.should.equal(true);
         done();
@@ -22,16 +22,16 @@ describe("GET /api/v1/products", () => {
   });
 });
 
-describe("POST /api/v1/products", () => {
-  it("should create a product", done => {
+describe('POST /api/v1/products', () => {
+  it('should create a product', (done) => {
     chai
       .request(server)
-      .post("/api/v1/products")
+      .post('/api/v1/products')
       .send({
-        name: "Samsung s9",
+        name: 'Samsung s9',
         price: 200000,
         quantity: 12,
-        description: "8gb ram, 256gb storage"
+        description: '8gb ram, 256gb storage',
       })
       .end((error, res) => {
         should.not.exist(error);
@@ -42,11 +42,11 @@ describe("POST /api/v1/products", () => {
   });
 });
 
-describe("PUT /api/v1/products/productID", () => {
-  it("should update a single product", done => {
+describe('PUT /api/v1/products/productID', () => {
+  it('should update a single product', (done) => {
     chai
       .request(server)
-      .get("/api/v1/products")
+      .get('/api/v1/products')
       .end((error, res) => {
         should.not.exist(error);
         chai
@@ -69,11 +69,11 @@ describe("PUT /api/v1/products/productID", () => {
   });
 });
 
-describe("DELETE /api/v1/products/productId", () => {
-  it("should delete a single product", done => {
+describe('DELETE /api/v1/products/productId', () => {
+  it('should delete a single product', (done) => {
     chai
       .request(server)
-      .get("/api/v1/products")
+      .get('/api/v1/products')
       .end((error, res) => {
         should.not.exist(error);
         chai
@@ -86,10 +86,10 @@ describe("DELETE /api/v1/products/productId", () => {
           });
       });
   });
-  it("should return an error when given wrong productId", done => {
+  it('should return an error when given wrong productId', (done) => {
     chai
       .request(server)
-      .delete("/api/v1/products/55")
+      .delete('/api/v1/products/55')
       .end((error, res) => {
         res.status.should.eql(400);
         done();

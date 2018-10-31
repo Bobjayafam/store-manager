@@ -1,45 +1,43 @@
-import { Pool } from "pg";
-import UserModel from "./UserModel";
-import bcrypt from "bcrypt";
+import { Pool } from 'pg';
+import bcrypt from 'bcrypt';
+import UserModel from './UserModel';
 
 const connectionString = {
-  user: "bobjayafam",
-  host: "localhost",
-  database: "storemanager",
+  user: 'bobjayafam',
+  host: 'localhost',
+  database: 'storemanager',
   password: null,
-  port: 5432
+  port: 5432,
 };
 
 const pool = new Pool(connectionString);
 
-const username = "Jude";
-const password = bcrypt.hashSync("123456", 10);
-const role = "admin";
+const username = 'Jude';
+const password = bcrypt.hashSync('123456', 10);
+const role = 'admin';
 
 pool
   .connect()
-  .then(client => {
-    return client.query(UserModel.createTable).then(result => {
-      pool
-        .query("INSERT INTO users VALUES (default, $1, $2, $3)", [
-          username,
-          password,
-          role
-        ])
-        .then(result => {
-          console.log(result);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+  .then(client => client.query(UserModel.createTable).then((result) => {
+    pool
+      .query('INSERT INTO users VALUES (default, $1, $2, $3)', [
+        username,
+        password,
+        role,
+      ])
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-      client.release();
-    });
-  })
-  .catch(err => {
+    client.release();
+  }))
+  .catch((err) => {
     console.log(err.stack);
   });
 
 export default {
-  query: (text, params) => pool.query(text, params)
+  query: (text, params) => pool.query(text, params),
 };

@@ -1,50 +1,49 @@
-import chai from "chai";
-import chaiHttp from "chai-http";
-import server from "../index";
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import server from '../index';
 
-const { expect } = chai;
 const should = chai.should();
 
 chai.use(chaiHttp);
 
-describe("POST api/v1/users", () => {
-  it("should register a new user", done => {
+describe('POST api/v1/users', () => {
+  it('should register a new user', (done) => {
     chai
       .request(server)
-      .post("/api/v1/users")
+      .post('/api/v1/users')
       .send({
-        username: "messi3",
-        password: "123456",
-        role: "admin"
+        username: 'messi3',
+        password: '123456',
+        role: 'admin',
       })
       .end((error, res) => {
         should.not.exist(error);
         res.status.should.eql(201);
-        res.type.should.eql("application/json");
+        res.type.should.eql('application/json');
         done();
       });
   });
 });
 
-describe("GET /api/v1/users", () => {
-  it("should return all users", done => {
+describe('GET /api/v1/users', () => {
+  it('should return all users', (done) => {
     chai
       .request(server)
-      .get("/api/v1/users")
+      .get('/api/v1/users')
       .end((error, res) => {
         should.not.exist(error);
         res.status.should.equal(200);
-        res.type.should.equal("application/json");
+        res.type.should.equal('application/json');
         done();
       });
   });
 });
 
-describe("GEY /api/v1/users/:userId", () => {
-  it("should return a single user", done => {
+describe('GET /api/v1/users/:userId', () => {
+  it('should return a single user', (done) => {
     chai
       .request(server)
-      .get("/api/v1/users")
+      .get('/api/v1/users')
       .end((error, res) => {
         chai
           .request(server)
@@ -57,34 +56,34 @@ describe("GEY /api/v1/users/:userId", () => {
   });
 });
 
-// describe("GET /api/v1/users/userId", () => {
-//   it("should return a single user", done => {
-//     chai
-//       .request(server)
-//       .post("/api/v1/users")
-//       .send({ username: "messi", password: "123456", role: "attendant" })
-//       .end((error, res) => {
-//         should.not.exist(error);
-//         console.log(res.body);
-//         chai
-//           .request(server)
-//           .get(`/api/v1/users/${res.body.user.userId}`)
-//           .end((error, res) => {
-//             should.not.exist(error);
-//             res.status.should.eql(200);
-//             res.type.should.eql("application/json");
-//             res.body.success.should.equal(true);
-//             done();
-//           });
-//       });
-//   });
-// });
-
-describe("PUT /api/v1/users/userID", () => {
-  it("should update a single user details", done => {
+describe('GET /api/v1/users/userId', () => {
+  it('should return a single user', (done) => {
     chai
       .request(server)
-      .get("/api/v1/users")
+      .post('/api/v1/users')
+      .send({ username: 'messi', password: '123456', role: 'attendant' })
+      .end((error, res) => {
+        should.not.exist(error);
+        console.log(res.body);
+        chai
+          .request(server)
+          .get(`/api/v1/users/${res.body.user.userId}`)
+          .end((error, res) => {
+            should.not.exist(error);
+            res.status.should.eql(200);
+            res.type.should.eql('application/json');
+            res.body.success.should.equal(true);
+            done();
+          });
+      });
+  });
+});
+
+describe('PUT /api/v1/users/userID', () => {
+  it('should update a single user details', (done) => {
+    chai
+      .request(server)
+      .get('/api/v1/users')
       .end((error, res) => {
         should.not.exist(error);
         chai
@@ -98,9 +97,9 @@ describe("PUT /api/v1/users/userID", () => {
               .request(server)
               .put(`/api/v1/users/${res.body.user.userId}`)
               .send({
-                username: "judeafam1",
-                password: "123456",
-                role: "admin"
+                username: 'judeafam1',
+                password: '123456',
+                role: 'admin',
               })
               .end((error, res) => {
                 should.not.exist(error);
@@ -112,11 +111,11 @@ describe("PUT /api/v1/users/userID", () => {
   });
 });
 
-describe("DELETE /api/v1/users/userId", () => {
-  it("should delete a single user", done => {
+describe('DELETE /api/v1/users/userId', () => {
+  it('should delete a single user', (done) => {
     chai
       .request(server)
-      .get("/api/v1/users")
+      .get('/api/v1/users')
       .end((error, res) => {
         should.not.exist(error);
         chai
@@ -129,10 +128,10 @@ describe("DELETE /api/v1/users/userId", () => {
           });
       });
   });
-  it("should return an error when given wrong userId", done => {
+  it('should return an error when given wrong userId', (done) => {
     chai
       .request(server)
-      .delete("/api/v1/users/55")
+      .delete('/api/v1/users/55')
       .end((error, res) => {
         res.status.should.eql(400);
         done();

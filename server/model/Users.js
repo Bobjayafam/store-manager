@@ -1,44 +1,43 @@
-import shortid from "shortid";
-import bcrypt from "bcrypt";
+import shortid from 'shortid';
+import bcrypt from 'bcrypt';
 
 class User {
   constructor() {
     this.users = [
       {
         userId: shortid.generate(),
-        username: "judeafam",
+        username: 'judeafam',
         // password: bcrypt.hashSync("123456", 10),
-        role: "admin"
+        role: 'admin',
       },
       {
         userId: shortid.generate(),
-        username: "stanley",
+        username: 'stanley',
         // password: bcrypt.hashSync("123456", 10),
-        role: "attendant"
-      }
+        role: 'attendant',
+      },
     ];
   }
+
   addUser(user) {
-    let hash = bcrypt.hashSync(user.password, 10);
+    const hash = bcrypt.hashSync(user.password, 10);
     const newUser = {
       userId: shortid.generate(),
       username: user.username,
       // password: hash,
-      role: user.role
+      role: user.role,
     };
     const { userId, username, role } = newUser;
     this.users.push({
       userId,
       username,
-      role
+      role,
     });
     return newUser;
   }
 
   findUser(id) {
-    return this.users.find(user => {
-      return user.userId === id;
-    });
+    return this.users.find(user => user.userId === id);
   }
 
   findAll() {
@@ -48,9 +47,9 @@ class User {
   update(id, doc) {
     const user = this.findUser(id);
     const userIndex = this.users.indexOf(user);
-    this.users[userIndex].username = doc["username"];
-    this.users[userIndex].password = bcrypt.hashSync(doc["password"], 10);
-    this.users[userIndex].role = doc["role"];
+    this.users[userIndex].username = doc.username;
+    this.users[userIndex].password = bcrypt.hashSync(doc.password, 10);
+    this.users[userIndex].role = doc.role;
     return this.users[userIndex];
   }
 
