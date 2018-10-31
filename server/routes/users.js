@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.post('/', UserController.add);
 router.get('/', UserController.getAll);
-// router.get("/:userId", UserController.getOne);
-// router.put("/:userId", UserController.update);
-// router.delete("/:userId", UserController.delete);
+router.get('/:userId', UserController.getOne);
+router.put('/:userId', UserController.update);
+router.delete('/:userId', UserController.delete);
 
 export default router;
