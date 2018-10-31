@@ -1,5 +1,5 @@
-import UserModel from "../model/Users";
-import Joi from "joi";
+import UserModel from '../model/Users';
+import db from '../db/connection';
 
 class UserController {
   static add(req, res) {
@@ -11,45 +11,52 @@ class UserController {
     if (!username && !password && !role) {
       res.status(422).json({
         success: false,
-        message: "All fields are required"
+        message: 'All fields are required',
       });
       return;
     }
-    if (role !== "admin" && role !== "attendant") {
+    if (role !== 'admin' && role !== 'attendant') {
       res.status(422).json({
         success: false,
-        message: '"role" can only be assigned a value of "admin" or "attendant"'
+        message: '"role" can only be assigned a value of "admin" or "attendant"',
       });
       return;
     }
     if (!username) {
       res.status(422).json({
         success: false,
-        message: "'Username' can not be empty"
+        message: "'Username' can not be empty",
       });
       return;
     }
     if (!password) {
       res.status(422).json({
         success: false,
-        message: "Password can not be empty"
+        message: 'Password can not be empty',
       });
       return;
     }
     res.status(201).json({
       success: true,
       username,
-      role
+      role,
     });
   }
 
   static getAll(req, res) {
-    const users = UserModel.findAll();
-
-    return res.status(200).json({
-      success: true,
-      users
-    });
+    db.query('SELECT * FROM users')
+      .then((users) => {
+        res.status(200).json({
+          success: true,
+          data: users.rows,
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({
+          success: false,
+          message: err.message,
+        });
+      });
   }
 
   static getOne(req, res) {
@@ -57,7 +64,7 @@ class UserController {
     if (!user) {
       res.status(404).json({
         success: false,
-        message: `User with userId ${req.params.userId} not found`
+        message: `User with userId ${req.params.userId} not found`,
       });
     }
     const { userId, username, role } = user;
@@ -66,13 +73,12 @@ class UserController {
       user: {
         userId,
         username,
-        role
-      }
+        role,
+      },
     });
   }
 
   static update(req, res) {
-    const user = UserModel.findUser(req.params.userId);
     const updatedUser = UserModel.update(req.params.userId, req.body);
     let { username, password, role } = updatedUser;
     username = username.toLowerCase().trim();
@@ -82,37 +88,38 @@ class UserController {
     if (!username && !password && !role) {
       res.status(422).json({
         success: false,
-        message: "All fields are required"
+        message: 'All fields are required',
       });
       return;
     }
-    if (role !== "admin" && role !== "attendant") {
+    if (role !== 'admin' && role !== 'attendant') {
       res.status(422).json({
         success: false,
-        message: '"role" can only be assigned a value of "admin" or "attendant"'
+        message: '"role" can only be assigned a value of "admin" or "attendant"',
       });
       return;
     }
     if (!username) {
       res.status(422).json({
         success: false,
-        message: "'Username' can not be empty"
+        message: "'Username' can not be empty",
       });
       return;
     }
     if (!password) {
       res.status(422).json({
         success: false,
-        message: "Password can not be empty"
+        message: 'Password can not be empty',
       });
       return;
     }
-    return res.status(200).json({ success: true, updatedUser });
+    res.status(200).json({ success: true, updatedUser });
   }
+
   static delete(req, res) {
     const user = UserModel.findUser(req.params.userId);
     if (!user) {
-      res.status(400).json({ message: "User not found" });
+      res.status(400).json({ message: 'User not found' });
       return;
     }
     const deleteResponse = UserModel.delete(user);

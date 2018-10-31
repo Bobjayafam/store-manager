@@ -1,79 +1,52 @@
-# store-manager
+# Store Manager
 
 [![Coverage Status](https://coveralls.io/repos/github/Bobjayafam/store-manager/badge.svg?branch=develop)](https://coveralls.io/github/Bobjayafam/store-manager?branch=develop) 
 [![Build Status](https://travis-ci.org/Bobjayafam/store-manager.svg?branch=develop)](https://travis-ci.org/Bobjayafam/store-manager)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8a5062d2ba132f09c9c1/maintainability)](https://codeclimate.com/github/Bobjayafam/store-manager/maintainability)
 
+> Store Manager is a web application that helps store owners manage sales and product inventory records. This is only meant to be used in one store.
 
-# Store Manager
 
-Store Manager is a web application that helps store owners manage sales and product inventory
-records. 
+## Introduction
 
-## Getting Started
+Welcome to Store manager API version 1!
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes..
+## Features
 
-### Prerequisites
 
-To work on this project,  you need to have NodeJs and Git installed
+## Getting started
 
-### Install and Run Locally
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-A step by step series of examples that tell you how to get a development env running
+## Prerequisites
 
-Say what the step will be
+To work with this project you need to have the following installed on your local machine
 
-```
-$ git clone https://github.com/Bobjayafam/store-manager.git
+1. [NodeJS](https://nodejs.org)
+2. [Git](https://git-scm.com/downloads)
+3. [Postgres](https://www.postgresql.org)
+
+## Install and run locally
+
+```bash
+$ git clone git@github.com:bobjayafam/store-manager.git
 $ cd store-manager
 
-```
+# rename .env.sample to .env
+
 $ npm install
-$ npm run dev
+$ npm start
 ```
 
-## Running the tests
+## Test
 
-```
+```bash
 $ npm run test
 ```
 
-## API usage
-The API url can be found at (https://mystore-manager.herokuapp.com/api/v1)
+## API Usage
 
-## User endpoints ``/api/v1/users``
-
-| Method        | route         | description  |
-| ------------- |:-------------:| -----:|
-| GET           | /users        | gets all user |
-| POST          | /user         |   creates a user |
-| GET           | /users/:id    |    gets a single user |
-| PUT           | /users/:id    |    updates a single user |
-| DELETE        | /users/:id    |    deletes a single user |
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-**Jude Afam** - https://github.com/bobjayafam
+The api is hosted at [https://mystore-manager.herokuapp.com/api/v1/users](https://my.herokuapp.com/api/v1)
 
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
 
