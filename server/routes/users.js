@@ -5,7 +5,6 @@ import Auth from '../Middleware/Auth';
 
 const router = express.Router();
 
-
 router.get('/', Auth.isLoggedInAsAdmin, UserController.getAll);
 router.get('/:id', Auth.isLoggedInAsAdmin, UserController.getOne);
 router.put('/:id', Auth.isLoggedInAsAdmin, UserController.update);

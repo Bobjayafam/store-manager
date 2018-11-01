@@ -9,7 +9,7 @@ class UserController {
     password = password.trim();
     role = role.toLowerCase().trim();
 
-    if (!username && !password && !role) {
+    if (!username || !password || !role) {
       res.status(422).json({
         success: false,
         message: 'All fields are required',

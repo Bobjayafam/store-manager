@@ -12,7 +12,6 @@
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && node ./dist/index.js",
     "create-tables": "psql -U postgres -d store_manager_test -f server/db/create-tables.sql",
-    "create-tables-test": "psql -U postgres -f server/db/create-tables-test.sql",
     "dev": "babel-watch server/index.js",
     "drop-tables": "psql -U postgres -d store_manager_test -f server/db/dropTables.sql",
     "pretest": "NODE_ENV=test npm run drop-tables && npm run create-tables",

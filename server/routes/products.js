@@ -1,12 +1,13 @@
 import express from 'express';
 import ProductController from '../controllers/ProductController';
+import Auth from '../Middleware/Auth';
 
 const router = express.Router();
 
-router.get('/', ProductController.getAll);
-router.post('/', ProductController.add);
-router.get('/:productId', ProductController.getOne);
-router.put('/:productId', ProductController.update);
-router.delete('/:productId', ProductController.delete);
+router.get('/', Auth.verifyToken, ProductController.getAll);
+router.post('/', Auth.isLoggedInAsAdmin, ProductController.add);
+router.get('/:id', Auth.isLoggedInAsAdmin, ProductController.getOne);
+router.put('/:id', Auth.isLoggedInAsAdmin, ProductController.update);
+router.delete('/:id', Auth.isLoggedInAsAdmin, ProductController.delete);
 
 export default router;
