@@ -1,43 +1,11 @@
 import { Pool } from 'pg';
-import bcrypt from 'bcrypt';
-import UserModel from './UserModel';
+import dotenv from 'dotenv';
 
-const connectionString = {
-  user: 'bobjayafam',
-  host: 'localhost',
-  database: 'storemanager',
-  password: null,
-  port: 5432,
-};
+dotenv.config();
 
-const pool = new Pool(connectionString);
+const connectionString = process.env.NODE_ENV === 'test' ? process.env.DATABASE_URI_TEST : process.env.DATABASE_URI;
 
-const username = 'Jude';
-const password = bcrypt.hashSync('123456', 10);
-const role = 'admin';
 
-pool
-  .connect()
-  .then(client => client.query(UserModel.createTable).then((result) => {
-    pool
-      .query('INSERT INTO users VALUES (default, $1, $2, $3)', [
-        username,
-        password,
-        role,
-      ])
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+const pool = new Pool({ connectionString });
 
-    client.release();
-  }))
-  .catch((err) => {
-    console.log(err.stack);
-  });
-
-export default {
-  query: (text, params) => pool.query(text, params),
-};
+export default pool;
