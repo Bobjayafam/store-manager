@@ -83,11 +83,6 @@ class UserController {
             if (result) {
               const payload = { username, password, role };
               Auth.generateToken(payload, res);
-            } else {
-              res.status(401).json({
-                success: false,
-                message: 'Unable to login',
-              });
             }
           });
         }
