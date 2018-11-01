@@ -20,7 +20,6 @@ class ProductController {
     }
     db.query('INSERT INTO products (name, price, quantity, description, imgUrl) VALUES ($1, $2, $3, $4, $5) RETURNING *', [name, price, quantity, description, imgUrl])
       .then((product) => {
-        console.log(product);
         if (product.rowCount > 0) {
           res.status(200).json({
             success: true,
@@ -49,7 +48,6 @@ class ProductController {
     const { id } = req.params;
     db.query('SELECT * FROM products WHERE id = $1', [parseInt(id, 10)])
       .then((product) => {
-        console.log(product);
         if (product.rowCount > 0) {
           res.status(200).json({
             success: true,

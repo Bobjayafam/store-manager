@@ -27,7 +27,7 @@ class Auth {
     } else {
       jwt.verify(token, process.env.TOKEN_SECRET, (error, decoded) => {
         if (error) {
-          res.json({
+          res.status(400).json({
             message: 'Invalid token',
           });
         } else {
