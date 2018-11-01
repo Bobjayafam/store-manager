@@ -5,55 +5,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <title>mySTORE</title>
   <script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7"
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="styles.css">
-  <title>STORE-manager</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-  <div class="container">
-    <div class="intro-text container-item">
-      <h1>Welcome to mySTORE</h1>
-      <p class="sub-lead">A Retail Management software <br> that gives you a complete control <br> over your Products
-        and Inventory</p>
-      <br>
-      <p>It is : </p>
-      <div class="icons">
-        <div class="cloud-icon">
-          <i class="fas fa-cloud"></i> Cloud-based.
+  <header class="hero flex-center">
+    <div class="hero-logo">
+      <img src="images/logo.png" alt="mystore-logo">
+    </div>
+    <div class="hero-title">
+      Welcome to mySTORE
+    </div>
+    <div class="hero-subtitle">
+      A Retail Management Web Application that gives you a complete control over your Products
+      and Inventory
+    </div>
+  </header>
+  <section class="benefits center">
+    <div class="container grid-3">
+      <div>
+        <div class="icons">
+          <i class="fas fa-cloud"></i>
         </div>
-        <div class="devices-icon">
-            <i class="fas fa-desktop"></i>
-            <i class="fas fa-laptop"></i>
-            <i class="fas fa-mobile"></i> Works on all devices.
+
+        <h3>Cloud based</h3>
+        <p>It can be used anywhere as long there is internet connection</p>
+      </div>
+      <div>
+        <div class="icons">
+          <i class="fas fa-desktop"></i>
+          <i class="fas fa-laptop"></i>
+          <i class="fas fa-mobile"></i>
         </div>
-        <div class="arrow-up-icon">
-          <i class="fas fa-arrow-up"></i> sure to maximize profit.
+        <h3>works on all devices</h3>
+        <p>It works on laptops, mobile phones, tablets and desktop computers</p>
+      </div>
+      <div>
+        <div class="icons">
+          <i class="fas fa-arrow-up"></i>
         </div>
+
+        <h3>Increased profit</h3>
+        <p>It is sure to maximize profit and productivity</p>
       </div>
     </div>
-    <div class="login-wrapper container-item">
-      <h2>Login</h2>
+  </section>
 
-
-      <form>
-        <div class="input-box">
-          <input type="text" name="" required>
-          <label for="">Username</label>
-        </div>
-        <div class="input-box">
-          <input type="password" name="" required>
-          <label for="">Password</label>
-        </div>
-        <a href="admin-view-sales.html" class="btn">Login</a>
-      </form>
+  <section class="user-login bg-light center">
+    <div class="container">
+      <div class="invalid-alert"></div>
+      <div class="form-style-8">
+        <h2>Login to your account</h2>
+        <form>
+          <input type="text" name="username" id="username" placeholder="Username" required />
+          <input type="password" name="password" id="password" placeholder="Password" required />
+          <input type="submit" value="Login" />
+        </form>
+      </div>
     </div>
+  </section>
 
-  </div>
+  <footer class="center">
+    <p>mySTORE &copy; 2018</p>
+  </footer>
 
-  <script src="main.js"></script>
+  <script src="js/login.js"></script>
 </body>
 
 </html>

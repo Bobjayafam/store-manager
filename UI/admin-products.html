@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Modify Products</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles1.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="flex-center">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="mySTORE logo">
+      </a>
+      <nav class="nav">
+        <ul>
+          <li><a href="admin-view-sales.html">View Sales</a></li>
+          <li class="active"><a href="admin-products.html">Manage Products</a></li>
+          <li><a href="manage-attendants.html">Manage Attendants</a></li>
+          <li><a href="index.html">Logout</a></li>
+        </ul>
+      </nav>
+      <a href="javascript:void(0);" class="hamburger-icon">
+        <i class="fas fa-bars"></i>
+      </a>
+    </div>
+  </header>
+
+  <section class="main-content">
+    <div class="container">
+      <section class="main">
+        <h2>Add Products to store</h2>
+
+        <form class="form-style-8">
+          <div class="input-box">
+            <input type="text" name="" placeholder="Enter Product name" required>
+          </div>
+          <div class="input-box">
+            <input type="text" name="" placeholder="Enter Price" required>
+          </div>
+          <div class="input-box">
+            <input type="number" name="" placeholder="Quantity" required>
+          </div>
+          <div class="input-box">
+            <textarea name="" placeholder="Enter Product Description" required></textarea>
+          </div>
+
+          <label class="label" for="input">Please upload a picture !</label>
+
+          <div class="input">
+            <input name="input" id="file" type="file">
+          </div>
+
+          <input type="submit" class="btn" value="SUBMIT">
+
+        </form>
+      </section>
+      <div class="form-style-8">
+        <div class="input-box">
+          <input type="text" name="" id="input" placeholder="Filter products by name">
+        </div>
+      </div>
+
+      <div class="table-responsive-vertical">
+        <table id="table" class="table table-hover">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Price</th>
+              <th>Available Quantity</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-title="ID">01</td>
+              <td data-title="name">Tecno</td>
+              <td data-title="product-image">
+                <div class="card-img">
+                  <img src="images/tecno-camon-x-pro.jpg" alt="tecno-camon-x-pro">
+                </div>
+              </td>
+              <td data-title="price">$245</td>
+              <td data-title="quantity">10pcs</td>
+              <td data-title="description">2GB Ram, 13MP, 32GB storage capacity</td>
+              <td data-title="actions">
+                <button class="edit" class="edit">Edit</button>
+                <button class="delete" id="delete">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-title="ID">01</td>
+              <td data-title="name">Gionee</td>
+              <td data-title="product-image">
+                <div class="card-img">
+                  <img src="images/tecno-camon-x-pro.jpg" alt="tecno-camon-x-pro">
+                </div>
+              </td>
+              <td data-title="price">$245</td>
+              <td data-title="quantity">10pcs</td>
+              <td data-title="description">2GB Ram, 13MP, 32GB storage capacity</td>
+              <td data-title="actions">
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-title="ID">01</td>
+              <td data-title="name">Samsung</td>
+              <td data-title="product-image">
+                <div class="card-img">
+                  <img src="images/tecno-camon-x-pro.jpg" alt="tecno-camon-x-pro">
+                </div>
+              </td>
+              <td data-title="price">$245</td>
+              <td data-title="quantity">10pcs</td>
+              <td data-title="description">2GB Ram, 13MP, 32GB storage capacity</td>
+              <td data-title="actions">
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-title="ID">01</td>
+              <td data-title="name">iPhone</td>
+              <td data-title="product-image">
+                <div class="card-img">
+                  <img src="images/tecno-camon-x-pro.jpg" alt="tecno-camon-x-pro">
+                </div>
+              </td>
+              <td data-title="price">$245</td>
+              <td data-title="quantity">10pcs</td>
+              <td data-title="description">2GB Ram, 13MP, 32GB storage capacity</td>
+              <td data-title="actions">
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-title="ID">01</td>
+              <td data-title="name">iPhone</td>
+              <td data-title="product-image">
+                <div class="card-img">
+                  <img src="images/tecno-camon-x-pro.jpg" alt="tecno-camon-x-pro">
+                </div>
+              </td>
+              <td data-title="price">$245</td>
+              <td data-title="quantity">10pcs</td>
+              <td data-title="description">2GB Ram, 13MP, 32GB storage capacity</td>
+              <td data-title="actions">
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-title="ID">01</td>
+              <td data-title="name">iPhone</td>
+              <td data-title="product-image">
+                <div class="card-img">
+                  <img src="images/tecno-camon-x-pro.jpg" alt="tecno-camon-x-pro">
+                </div>
+              </td>
+              <td data-title="price">$245</td>
+              <td data-title="quantity">10pcs</td>
+              <td data-title="description">2GB Ram, 13MP, 32GB storage capacity</td>
+              <td data-title="actions">
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Modal Header</h2>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the Modal Body</p>
+          <p>Some other text...</p>
+        </div>
+        <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </section>
+
+  <footer class="center">
+    <p>mySTORE &copy; 2018</p>
+  </footer>
+
+  <script src="js/productModal.js"></script>
+</body>
+
+</html>
