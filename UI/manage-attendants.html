@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Manage Attendants</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles1.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="flex-center">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="mySTORE logo">
+      </a>
+      <nav class="nav">
+        <ul>
+          <li><a href="admin-view-sales.html">View Sales</a></li>
+          <li><a href="admin-products.html">Manage Products</a></li>
+          <li class="active"><a href="manage-attendants.html">Manage Attendants</a></li>
+          <li><a href="index.html">Logout</a></li>
+        </ul>
+      </nav>
+      <a href="javascript:void(0);" class="hamburger-icon">
+        <i class="fas fa-bars"></i>
+      </a>
+    </div>
+  </header>
+
+  <section class="main-content">
+    <div class="container">
+      <section class="main">
+        <h2>Create A User Account</h2>
+
+        <form class="form-style-8">
+          <div class="input-box">
+            <input type="text" name="" placeholder="Enter name" required>
+          </div>
+          <div class="input-box">
+            <input type="text" name="" placeholder="Enter username" required>
+          </div>
+          <div class="input-box">
+            <input type="text" name="" placeholder="Enter Password" required>
+          </div>
+          <div class="input-box">
+            <input type="text" name="" placeholder="Confirm Password" required>
+          </div>
+          <div class="select-field">
+            <select name="auth-type" id="">
+              <option value="" disabled selected>Choose User Type</option>
+              <option value="Attendant">Attendant</option>
+              <option value="Administrator">Administrator</option>
+            </select>
+          </div>
+
+          <input type="submit" class="btn" value="SUBMIT">
+
+        </form>
+      </section>
+
+      <div class="attendants-list">
+        <h2>Attendants</h2>
+        <div class="table-responsive-vertical">
+          <table id="table" class="table table-hover">
+            <thead>
+              <tr>
+                <th>Attendant ID</th>
+                <th>Attendant Name</th>
+                <th>Username</th>
+                <th>Employment Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-title="ID">01</td>
+                <td data-title="name">Ada</td>
+                <td data-title="username">Ada2018</td>
+                <td data-title="employment-date">28th January, 2018</td>
+                <td data-title="actions">
+                  <button class="edit" class="edit">Edit</button>
+                  <button class="delete" id="delete">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td data-title="ID">02</td>
+                <td data-title="name">John</td>
+                <td data-title="username">john4eva</td>
+                <td data-title="employment-date">30th January, 2018</td>
+                <td data-title="actions">
+                  <button class="edit" class="edit">Edit</button>
+                  <button class="delete" id="delete">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td data-title="ID">03</td>
+                <td data-title="name">Stanley</td>
+                <td data-title="username">stanobi</td>
+                <td data-title="employment-date">3rd February, 2018</td>
+                <td data-title="actions">
+                  <button class="edit" class="edit">Edit</button>
+                  <button class="delete" id="delete">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Delete Confirmation</h2>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete this Attendant?</p>
+          </div>
+          <div class="modal-footer">
+            <button class="cancel"="cancel">Cancel</button>
+            <button>Yes</button>
+          </div>
+        </div>
+
+      </div>
+
+
+
+  </section>
+
+  <footer class="center">
+    <p>mySTORE &copy; 2018</p>
+  </footer>
+
+  <script src="js/manageModal.js"></script>
+</body>
+
+</html>
