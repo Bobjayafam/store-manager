@@ -1,12 +1,11 @@
 import express from 'express';
 import logger from 'morgan';
-import dotenv from 'dotenv';
 import homeRoute from './routes/home';
 import userRoutes from './routes/users';
 import productRoutes from './routes/products';
 import salesRoutes from './routes/sales';
+import authRoutes from './routes/auth';
 
-dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT || 4000;
@@ -17,6 +16,8 @@ app.use('/api/v1', homeRoute);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/products', productRoutes);
 app.use('/api/v1/sales', salesRoutes);
+app.use('/api/v1/auth', authRoutes);
+
 
 const server = app.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);

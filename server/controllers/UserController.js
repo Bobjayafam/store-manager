@@ -1,5 +1,6 @@
-import UserModel from '../model/Users';
+import bcrypt from 'bcrypt';
 import db from '../db/connection';
+import Auth from '../Middleware/Auth';
 
 class UserController {
   static add(req, res) {
@@ -36,11 +37,24 @@ class UserController {
       });
       return;
     }
-    res.status(201).json({
-      success: true,
-      username,
-      role,
-    });
+    const hashed = bcrypt.hashSync(password, 10);
+    db.query(
+      'INSERT INTO users(username, password, role) VALUES ($1, $2, $3) RETURNING *',
+      [username, hashed, role],
+    )
+      .then((user) => {
+        if (user.rowCount > 0) {
+          res.status(201).json({
+            success: true,
+            user: user.rows[0],
+          });
+        }
+      })
+      .catch((error) => {
+        res.status(500).json({
+          error: error.message,
+        });
+      });
   }
 
   static getAll(req, res) {
@@ -59,28 +73,55 @@ class UserController {
       });
   }
 
-  static getOne(req, res) {
-    const user = UserModel.findUser(req.params.userId);
-    if (!user) {
-      res.status(404).json({
-        success: false,
-        message: `User with userId ${req.params.userId} not found`,
+  static login(req, res) {
+    const { username, password } = req.body;
+    db.query('SELECT * FROM users WHERE username = $1', [username])
+      .then((user) => {
+        if (user.rowCount > 0) {
+          const { username, hashPassword, role } = user.rows[0];
+          bcrypt.compare(password, user.rows[0].password).then((result) => {
+            if (result) {
+              const payload = { username, password, role };
+              Auth.generateToken(payload, res);
+            } else {
+              res.status(401).json({
+                success: false,
+                message: 'Unable to login',
+              });
+            }
+          });
+        }
       });
-    }
-    const { userId, username, role } = user;
-    return res.json({
-      success: true,
-      user: {
-        userId,
-        username,
-        role,
-      },
-    });
+  }
+
+  static getOne(req, res) {
+    const { id } = req.params;
+    db.query('SELECT username, role FROM users WHERE id = $1', [parseInt(id, 10)])
+      .then((user) => {
+        if (user) {
+          res.status(200).json({
+            success: true,
+            data: user.rows[0],
+          });
+        } else {
+          res.status(404).json({
+            success: false,
+            message: 'User not found',
+          });
+        }
+      }).catch((error) => {
+        res.status(500).json({
+          success: false,
+          message: error.message,
+        });
+      });
   }
 
   static update(req, res) {
-    const updatedUser = UserModel.update(req.params.userId, req.body);
-    let { username, password, role } = updatedUser;
+    let {
+      username, password, role,
+    } = req.body;
+    const id = parseInt(req.params.id, 10);
     username = username.toLowerCase().trim();
     password = password.trim();
     role = role.toLowerCase().trim();
@@ -113,17 +154,25 @@ class UserController {
       });
       return;
     }
-    res.status(200).json({ success: true, updatedUser });
+    db.query('UPDATE users SET username=$1, password=$2, role=$3 WHERE id=$4', [username, password, role, id])
+      .then((user) => {
+        res.status(200).json({
+          success: true,
+          message: `successfully updated user with id ${id}`,
+        });
+      });
   }
 
   static delete(req, res) {
-    const user = UserModel.findUser(req.params.userId);
-    if (!user) {
-      res.status(400).json({ message: 'User not found' });
-      return;
-    }
-    const deleteResponse = UserModel.delete(user);
-    res.status(204).send(deleteResponse);
+    let { id } = req.params;
+    id = parseInt(id, 10);
+    db.query('DELETE FROM users WHERE id=$1', [id])
+      .then((result) => {
+        res.status(200).json({
+          success: true,
+          message: `Removed ${result.rowCount} user`,
+        });
+      });
   }
 }
 
