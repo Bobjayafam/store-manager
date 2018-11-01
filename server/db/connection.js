@@ -3,9 +3,19 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const connectionString = process.env.NODE_ENV === 'test' ? process.env.DATABASE_URI_TEST : process.env.DATABASE_URI;
+// let connectionString = process.env.NODE_ENV === 'test' ? process.env.DATABASE_URL_TEST : process.env.DATABASE_URL;
+
+let connectionString = process.env.DATABASE_URL;
+
+if (process.env.NODE_ENV === 'test') {
+  connectionString = process.env.DATABASE_URL_TEST;
+}
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
 
 
-const pool = new Pool({ connectionString });
 
 export default pool;
