@@ -14,7 +14,6 @@ describe('POST api/v1/auth/login', () => {
         username: 'admin',
         password: '123456',
       }).end((error, res) => {
-        console.log(res.body);
         should.not.exist(error);
         res.status.should.eql(200);
         done();

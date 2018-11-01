@@ -3,8 +3,8 @@ node_js:
   - "stable"
 services:
   - postgresql
-before_script:
-  - psql -c "create database store_manager_test;" -U postgres
+# before_script:
+#   - psql -c "create database store_manager_test;" -U postgres
 
 script:
   - npm test
