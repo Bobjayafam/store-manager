@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400, 500, 600, 700');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -12,7 +14,7 @@ html, body {
 body {
 	background: #f4f4f4;
 	color: #000;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: "Montserrat", sans-serif;
 }
 
 header {
@@ -113,7 +115,8 @@ header {
 .form-style-8 input[type="button"], 
 .form-style-8 input[type="submit"],
 .edit,
-.delete {
+.delete, 
+.view-more {
 	background-color:  #c92f2f;
 	display: inline-block;
 	cursor: pointer;
@@ -194,7 +197,7 @@ label {
   color: #1a4756;
 }
 
-  .modal {
+  .modal, .modal-edit {
         position: fixed;
         left: 0;
         top: 0;
@@ -228,7 +231,7 @@ label {
     .close:hover {
         background-color: darkgray;
     }
-    .show-modal {
+    .show-modal, .show-modal-edit {
         opacity: 1;
         visibility: visible;
         transform: scale(1.0);
@@ -237,13 +240,36 @@ label {
 
     .attendants-list {
     	margin-top: 30px;
-    }
+		}
+		
+		.add-to-cart {
+			margin:15px;
+		}
 	
 
 	.products-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 50px;
+}
+.items-list {
+	margin-top: 20px;
+}
+
+button.yes, button.no{
+	outline: 0;
+	border: none;
+	padding: 10px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+button.no{
+	margin-right: auto;
+}
+
+.items {
+	margin-bottom: 10px;
 }
 
 .card {
@@ -287,4 +313,8 @@ label {
   display: grid;
   grid-template-columns: 1fr 1fr;
 	}
+}
+
+.quantity {
+	width: 30%;
 }

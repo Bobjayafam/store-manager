@@ -50,6 +50,23 @@ describe('GET /api/v1/products/:id', () => {
         });
     });
   });
+  it('should return return not found', (done) => {
+    chai.request(server).post('/api/v1/auth/login').send({
+      username: 'admin',
+      password: '123456',
+    }).end((error, res) => {
+      should.not.exist(error);
+      chai
+        .request(server)
+        .get(`/api/v1/products/${4}`)
+        .set('api-access-token', res.body.token)
+        .end((error, res) => {
+          should.not.exist(error);
+          res.status.should.eql(404);
+          done();
+        });
+    });
+  });
 });
 
 
@@ -74,6 +91,53 @@ describe('POST /api/v1/products', () => {
         .end((error, res) => {
           should.not.exist(error);
           res.status.should.eql(201);
+          done();
+        });
+    });
+  });
+
+  it('should not create a new product if name is undefined', (done) => {
+    chai.request(server).post('/api/v1/auth/login').send({
+      username: 'admin',
+      password: '123456',
+    }).end((error, res) => {
+      should.not.exist(error);
+      chai
+        .request(server)
+        .post('/api/v1/products')
+        .set('api-access-token', res.body.token)
+        .send({
+          name: '',
+          price: 358000,
+          quantity: 5,
+          description: 'sleek and nice',
+          imgUrl: 'http:unsplash.com/nice.jpg',
+        })
+        .end((error, res) => {
+          res.status.should.eql(400);
+          done();
+        });
+    });
+  });
+  it('should not create a new product if price is not a number', (done) => {
+    chai.request(server).post('/api/v1/auth/login').send({
+      username: 'admin',
+      password: '123456',
+    }).end((error, res) => {
+      should.not.exist(error);
+      chai
+        .request(server)
+        .post('/api/v1/products')
+        .set('api-access-token', res.body.token)
+        .send({
+          name: '',
+          price: 'xxxx',
+          quantity: 5,
+          description: 'sleek and nice',
+          imgUrl: 'http:unsplash.com/nice.jpg',
+        })
+        .end((error, res) => {
+          res.status.should.eql(400);
           done();
         });
     });

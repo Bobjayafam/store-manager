@@ -5,90 +5,88 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cart</title>
+  <title>Products</title>
   <script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7"
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="create.css">
+  <link rel="stylesheet" href="css/styles1.css">
 </head>
 
 <body>
-
-  <div class="container">
-    <header>
-      <nav>
+  <header class="header">
+    <div class="flex-center">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="mySTORE logo">
+      </a>
+      <nav class="nav">
         <ul>
-          <li><a href="index.html">mySTORE</a></li>
+          <li><a href="attendant-products.html">Products</a></li>
+          <li><a href="view-sales.html">My Sales</a></li>
+          <li class="active"><a href="cart.html">Cart</a></li>
+          <li><a href="index.html">Logout</a></li>
         </ul>
       </nav>
-      <button class="btn">Logout</button>
-    </header>
-    <aside class="sidebar">
-      <h3></h3>
-      <ul>
-        <li><a href="products.html">View Products</a></li>
-        <li class="active"><a href="cart.html">Cart(9)</a></li>
-        <li><a href="view-sales.html">View Sales</a></li>
-      </ul>
-    </aside>
-    <!--aside-->
-    <div class="wrapper">
-      <section class="main">
-        <h2>Welcome, Attendant</h2>
-        <p>Your shopping cart</p>
-
-        <div class="shopping-cart">
-          <div class="table-responsive-vertical">
-            <table id="table" class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Product ID</th>
-                  <th>Product Name</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-title="ID">01</td>
-                  <td data-title="name">Tecno Camon X pro</td>
-                  <td data-title="quantity"><input type="number"></td>
-                  <td data-title="price">$250</td>
-                  <td data-title="action"><button class="btn">Remove</button></td>
-                </tr>
-                <tr>
-                  <td data-title="ID">01</td>
-                  <td data-title="name">Tecno Camon X pro</td>
-                  <td data-title="quantity"><input type="number"></td>
-                  <td data-title="price">$250</td>
-                  <td data-title="action"><button class="btn">Remove</button></td>
-                </tr>
-                <tr>
-                  <td data-title="ID">01</td>
-                  <td data-title="name">Tecno Camon X pro</td>
-                  <td data-title="quantity"><input type="number"></td>
-                  <td data-title="price">$250</td>
-                  <td data-title="action"><button class="btn">Remove</button></td>
-                </tr>
-                <tr>
-                  <td>Total Amount</td>
-                  <td data-title="total">$4500</td>
-                </tr>
-              </tbody>
-            </table>
-            <button class="btn">Checkout</button>
-          </div>
-
-      </section>
+      <a href="#" class="hamburger-icon">
+        <i class="fas fa-bars"></i>
+      </a>
     </div>
-    <!--wrapper-->
+  </header>
+
+  <section class="main-content">
+    <div class="container">
+      <p>Your shopping cart</p>
+
+      <div class="shopping-cart form-style-8">
+        <div class="table-responsive-vertical">
+          <table id="table" class="table table-hover">
+            <thead>
+              <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-title="ID">01</td>
+                <td data-title="name">Tecno Camon X pro</td>
+                <td data-title="quantity" class="quantity"><input type="number" min="0"></td>
+                <td data-title="price">$250</td>
+                <td data-title="action"><input type="button" value="Remove"></td>
+              </tr>
+              <tr>
+                <td data-title="ID">01</td>
+                <td data-title="name">Tecno Camon X pro</td>
+                <td data-title="quantity"><input type="number" min="0"></td>
+                <td data-title="price">$250</td>
+                <td data-title="action"><input type="button" value="Remove"></td>
+              </tr>
+              <tr>
+                <td data-title="ID">01</td>
+                <td data-title="name">Tecno Camon X pro</td>
+                <td data-title="quantity"><input type="number" min="0"></td>
+                <td data-title="price">$250</td>
+                <td data-title="action"><input type="button" value="Remove"></td>
+              </tr>
+              <tr>
+                <td>Total Amount</td>
+                <td data-title="total">$750</td>
+              </tr>
+            </tbody>
+          </table>
+          <input type="button" value="Checkout">
+        </div>
 
 
-    <footer>
-      <h3>Creative property of mySTORE</h3>
-      <p>&copy; 2018 mySTORE</p>
-    </footer>
-  </div>
-  <!--container-->
+      </div>
+
+
+  </section>
+
+  <footer class="center">
+    <p>mySTORE &copy; 2018</p>
+  </footer>
+
 
 </body>
 

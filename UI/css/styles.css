@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400, 500, 600, 700');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -12,7 +14,7 @@ html, body {
 body {
 	background: #fff;
 	color: #000;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: "Montserrat", sans-serif;
 }
 
 .hero {

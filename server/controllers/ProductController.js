@@ -1,4 +1,3 @@
-import ProductModel from '../model/Products';
 import db from '../db/connection';
 
 class ProductController {

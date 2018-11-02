@@ -16,6 +16,19 @@ describe('POST api/v1/auth/login', () => {
       }).end((error, res) => {
         should.not.exist(error);
         res.status.should.eql(200);
+        res.body.success.should.eql(true);
+        done();
+      });
+  });
+  it('should not login a user with wrong credentials', (done) => {
+    chai.request(server)
+      .post('/api/v1/auth/login')
+      .send({
+        username: 'admin',
+        password: '1234567',
+      }).end((error, res) => {
+        should.not.exist(error);
+        res.status.should.eql(401);
         done();
       });
   });
@@ -42,6 +55,31 @@ describe('POST api/v1/auth/signup', () => {
           .end((error, res) => {
             should.not.exist(error);
             res.status.should.eql(201);
+            done();
+          });
+      });
+  });
+
+  it('should not sign up a new user if admin login if token is expired/wrong', (done) => {
+    chai.request(server)
+      .post('/api/v1/auth/login')
+      .send({
+        username: 'admin',
+        password: '123456',
+      }).end((error, res) => {
+        should.not.exist(error);
+        res.status.should.eql(200);
+        chai.request(server)
+          .post('/api/v1/auth/signup')
+          .set('api-access-token', 'nsnnsmssmms')
+          .send({
+            username: 'maradona',
+            password: '123456',
+            role: 'attendant',
+          })
+          .end((error, res) => {
+            should.not.exist(error);
+            res.status.should.eql(401);
             done();
           });
       });
