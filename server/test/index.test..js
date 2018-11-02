@@ -23,3 +23,20 @@ describe('index route', () => {
     });
   });
 });
+
+describe('Page not found', () => {
+  describe('GET /', () => {
+    it('should return json', (done) => {
+      chai
+        .request(server)
+        .get('/api/v1/ueueueueuu')
+        .end((error, res) => {
+          should.not.exist(error);
+          res.status.should.eql(404);
+          res.type.should.eql('application/json');
+          res.body.success.should.equal(false);
+          done();
+        });
+    });
+  });
+});

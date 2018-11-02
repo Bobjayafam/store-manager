@@ -1,4 +1,3 @@
-import SalesModel from '../model/Sales';
 import db from '../db/connection';
 
 class SalesController {
@@ -14,6 +13,20 @@ class SalesController {
 
   static add(req, res) {
     const { userId, soldItems, price } = req.body;
+    if (!userId || !soldItems || !price) {
+      res.status(422).json({
+        success: false,
+        message: 'All fields are required',
+      });
+      return;
+    }
+    if (typeof userId !== 'number' || typeof price !== 'number') {
+      res.status(422).json({
+        success: false,
+        message: 'userId must be a number',
+      });
+      return;
+    }
     db.query('INSERT INTO sales (userId, soldItems, price) VALUES ($1, $2, $3) RETURNING *', [userId, JSON.stringify(soldItems), price])
       .then((sale) => {
         if (sale.rowCount > 0) {
