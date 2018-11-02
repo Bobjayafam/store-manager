@@ -11,88 +11,118 @@ describe('GET /api/v1/products', () => {
   it('should return all products', (done) => {
     chai
       .request(server)
-      .get('/api/v1/products')
-      .end((error, res) => {
-        should.not.exist(error);
-        res.type.should.eql('application/json');
-        res.status.should.eql(200);
-        res.body.success.should.equal(true);
-        done();
-      });
-  });
-});
-
-describe('POST /api/v1/products', () => {
-  it('should create a product', (done) => {
-    chai
-      .request(server)
-      .post('/api/v1/products')
+      .post('/api/v1/auth/login')
       .send({
-        name: 'Samsung s9',
-        price: 200000,
-        quantity: 12,
-        description: '8gb ram, 256gb storage',
+        username: 'admin',
+        password: '123456',
       })
       .end((error, res) => {
         should.not.exist(error);
-        res.status.should.equal(201);
-        res.body.success.should.eql(true);
-        done();
-      });
-  });
-});
-
-describe('PUT /api/v1/products/productID', () => {
-  it('should update a single product', (done) => {
-    chai
-      .request(server)
-      .get('/api/v1/products')
-      .end((error, res) => {
-        should.not.exist(error);
-        chai
-          .request(server)
-          .get(`/api/v1/products/${res.body.products[0].productId}`)
+        res.status.should.eql(200);
+        chai.request(server)
+          .get('/api/v1/products')
+          .set('api-access-token', res.body.token)
           .end((error, res) => {
             should.not.exist(error);
-            res.status.should.eql(200);
-            res.body.success.should.equal(true);
-            chai
-              .request(server)
-              .put(`/api/v1/products/${res.body.product.productId}`)
-              .end((error, res) => {
-                should.not.exist(error);
-                res.status.should.eql(200);
-                done();
-              });
-          });
-      });
-  });
-});
-
-describe('DELETE /api/v1/products/productId', () => {
-  it('should delete a single product', (done) => {
-    chai
-      .request(server)
-      .get('/api/v1/products')
-      .end((error, res) => {
-        should.not.exist(error);
-        chai
-          .request(server)
-          .delete(`/api/v1/products/${res.body.products[0].productId}`)
-          .end((error, res) => {
-            should.not.exist(error);
-            res.status.should.eql(204);
+            res.status.should.equal(200);
+            res.type.should.equal('application/json');
             done();
           });
       });
   });
-  it('should return an error when given wrong productId', (done) => {
-    chai
-      .request(server)
-      .delete('/api/v1/products/55')
-      .end((error, res) => {
-        res.status.should.eql(400);
-        done();
-      });
+});
+
+describe('GET /api/v1/products/:id', () => {
+  it('should return a single product', (done) => {
+    chai.request(server).post('/api/v1/auth/login').send({
+      username: 'admin',
+      password: '123456',
+    }).end((error, res) => {
+      should.not.exist(error);
+      chai
+        .request(server)
+        .get(`/api/v1/products/${1}`)
+        .set('api-access-token', res.body.token)
+        .end((error, res) => {
+          should.not.exist(error);
+          res.status.should.eql(200);
+          done();
+        });
+    });
+  });
+});
+
+
+describe('POST /api/v1/products', () => {
+  it('should create a new product', (done) => {
+    chai.request(server).post('/api/v1/auth/login').send({
+      username: 'admin',
+      password: '123456',
+    }).end((error, res) => {
+      should.not.exist(error);
+      chai
+        .request(server)
+        .post('/api/v1/products')
+        .set('api-access-token', res.body.token)
+        .send({
+          name: 'Iphonex',
+          price: 358000,
+          quantity: 5,
+          description: 'sleek and nice',
+          imgUrl: 'http:unsplash.com/nice.jpg',
+        })
+        .end((error, res) => {
+          should.not.exist(error);
+          res.status.should.eql(201);
+          done();
+        });
+    });
+  });
+});
+
+describe('PUT /api/v1/products', () => {
+  it('should update a single product', (done) => {
+    chai.request(server).post('/api/v1/auth/login').send({
+      username: 'admin',
+      password: '123456',
+    }).end((error, res) => {
+      should.not.exist(error);
+      chai
+        .request(server)
+        .put(`/api/v1/products/${2}`)
+        .set('api-access-token', res.body.token)
+        .send({
+          name: 'Samsung s9',
+          price: 359000,
+          quantity: 4,
+          description: 'sleek and nice',
+          imgUrl: 'http:unsplash.com/nice.jpg',
+        })
+        .end((error, res) => {
+          should.not.exist(error);
+          res.status.should.eql(200);
+          done();
+        });
+    });
+  });
+});
+
+describe('DELETE /api/v1/products/productID', () => {
+  it('should delete a single product', (done) => {
+    chai.request(server).post('/api/v1/auth/login').send({
+      username: 'admin',
+      password: '123456',
+    }).end((error, res) => {
+      should.not.exist(error);
+      chai
+        .request(server)
+        .del(`/api/v1/products/${2}`)
+        .set('api-access-token', res.body.token)
+        .end((error, res) => {
+          should.not.exist(error);
+          res.status.should.eql(200);
+          done();
+        });
+    });
   });
 });

@@ -21,7 +21,7 @@ class ProductController {
     db.query('INSERT INTO products (name, price, quantity, description, imgUrl) VALUES ($1, $2, $3, $4, $5) RETURNING *', [name, price, quantity, description, imgUrl])
       .then((product) => {
         if (product.rowCount > 0) {
-          res.status(200).json({
+          res.status(201).json({
             success: true,
             data: product.rows,
           });
@@ -77,7 +77,7 @@ class ProductController {
       .then((product) => {
         res.status(200).json({
           success: true,
-          message: `successfully updated product with id ${id}`,
+          data: product.rows,
         });
       });
   }
